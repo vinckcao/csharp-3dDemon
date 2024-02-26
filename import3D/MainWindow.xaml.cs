@@ -9,7 +9,8 @@ namespace import3D
     /// </summary>
     public partial class MainWindow : Window
     {
-        ModelImporter import = new ModelImporter();//导入模型的类对象
+        private ModelImporter import = new ModelImporter();//导入模型的类对象
+
         public MainWindow()
         {
             InitializeComponent();
@@ -25,15 +26,16 @@ namespace import3D
         {
             string myModelPath = chooseModel();
             Model3DGroup MyModel;
-            if (string.Empty!=myModelPath)
+            if (string.Empty != myModelPath)
             {
                 MyModel = import.Load(myModelPath);
                 model.Content = MyModel;
                 helixControl.ZoomExtents();
             }
         }
-        
-        string chooseModel() {
+
+        private string chooseModel()
+        {
             string path = string.Empty;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.InitialDirectory = System.IO.Directory.GetCurrentDirectory();
