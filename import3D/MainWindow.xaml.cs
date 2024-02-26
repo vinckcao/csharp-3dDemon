@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using HelixToolkit.Wpf;
 using System.IO;
 using System.Windows;
@@ -37,13 +38,20 @@ namespace import3D
             {
                 foreach (var path in myModelPath)
                 {
-                    var MyModel = import.Load(path);
-                    // 创建一个新的ModelVisual3D对象，并将其Content属性设置为新加载的模型
-                    ModelVisual3D modelVisual3D = new ModelVisual3D();
-                    modelVisual3D.Content = MyModel;
+                    try
+                    {
+                        var MyModel = import.Load(path);
+                        // 创建一个新的ModelVisual3D对象，并将其Content属性设置为新加载的模型
+                        ModelVisual3D modelVisual3D = new ModelVisual3D();
+                        modelVisual3D.Content = MyModel;
 
-                    // 将新的ModelVisual3D对象添加到ModelVisual3D容器中
-                    model.Children.Add(modelVisual3D);
+                        // 将新的ModelVisual3D对象添加到ModelVisual3D容器中
+                        model.Children.Add(modelVisual3D);
+                    }
+                    catch (Exception exception)
+                    {
+                        MessageBox.Show($"报错模型文件路径：{path},报错信息：{exception.Message}");
+                    }
                 }
                 helixControl.ZoomExtents();
             }
@@ -82,7 +90,7 @@ namespace import3D
 
         private void btnClear3DModel_Click(object sender, RoutedEventArgs e)
         {
-             model.Children.Clear();    
+            model.Children.Clear();
         }
     }
 }
