@@ -43,13 +43,13 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button
-                x:Name="F_16_btn"
+                x:Name="btnSelect3DModel"
                 Grid.Column="1"
                 Grid.ColumnSpan="2"
                 Width="75"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Click="F_16_btn_Click"
+                Click="btnSelect3DModel_Click"
                 Content="选择模型" />
         </Grid>
     </Grid>
