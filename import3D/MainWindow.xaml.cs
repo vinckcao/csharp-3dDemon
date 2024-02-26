@@ -45,28 +45,6 @@ namespace import3D
                 }
                 helixControl.ZoomExtents();
             }
-
-            //只能选择一个模型
-            //if (string.Empty != myModelPath)
-            //{
-            //    var MyModel = import.Load(myModelPath);
-
-            //    if (chkMult.IsChecked == true)
-            //    {
-            //        // 创建一个新的ModelVisual3D对象，并将其Content属性设置为新加载的模型
-            //        ModelVisual3D modelVisual3D = new ModelVisual3D();
-            //        modelVisual3D.Content = MyModel;
-
-            //        // 将新的ModelVisual3D对象添加到ModelVisual3D容器中
-            //        model.Children.Add(modelVisual3D);
-            //    }
-            //    else
-            //    {
-            //        model.Content = MyModel;
-            //    }
-
-            //    helixControl.ZoomExtents();
-            //}
         }
 
         private List<string> chooseModel()
