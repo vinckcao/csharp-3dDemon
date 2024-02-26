@@ -16,6 +16,7 @@ namespace import3D
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
         private readonly ModelImporter import = new ModelImporter();//导入模型的类对象
 
         public readonly string ModelForder = "3D_Models";//模型文件夹
@@ -24,6 +25,13 @@ namespace import3D
         {
             InitializeComponent();
             ObjReader myHelixObjReader = new ObjReader();
+
+            dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.Multiselect = true;
+            //dlg.FileName = "DinoRider.3ds"; // Default file name
+            //dlg.InitialDirectory = Path.Combine(Directory.GetCurrentDirectory(), ModelForder);
+            dlg.RestoreDirectory = true;//记住上次打开的文件夹
+
             //读入模型文件
             //Model3DGroup MyModel = import.Load($@".\{ModelForder}\DinoRider.3ds");
             //// Display the model
@@ -60,10 +68,7 @@ namespace import3D
         private List<string> chooseModel()
         {
             List<string> filesPath = new List<string>();
-            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.Multiselect = true;
-            dlg.FileName = "DinoRider.3ds"; // Default file name
-            dlg.InitialDirectory = Path.Combine(Directory.GetCurrentDirectory(), ModelForder);
+
             // Show open file dialog box
             bool? result = dlg.ShowDialog();
 
