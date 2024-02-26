@@ -42,6 +42,13 @@
                 <ColumnDefinition />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <CheckBox
+                x:Name="chkMult"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Content="多个"
+                IsChecked="False" />
             <Button
                 x:Name="F_16_btn"
                 Grid.Column="1"
