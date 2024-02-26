@@ -79,5 +79,10 @@ namespace import3D
             //MessageBox.Show("Hit 3D!");
             //new Window1().Show();
         }
+
+        private void btnClear3DModel_Click(object sender, RoutedEventArgs e)
+        {
+             model.Children.Clear();    
+        }
     }
 }
