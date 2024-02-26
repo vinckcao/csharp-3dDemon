@@ -30,7 +30,7 @@ namespace import3D
             //helixControl.ZoomExtents();
         }
 
-        private void btnSelect3DModel_Click(object sender, RoutedEventArgs e)
+        private void btnAdd3DModel_Click(object sender, RoutedEventArgs e)
         {
             var myModelPath = chooseModel();
             if (myModelPath.Count > 0)

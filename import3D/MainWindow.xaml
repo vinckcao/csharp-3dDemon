@@ -46,14 +46,14 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <Button
-                x:Name="btnSelect3DModel"
+               x:Name="btnAdd3DModel"
                 Grid.Column="1"
                 Width="75"
                 Margin="10,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Center"
                 VerticalContentAlignment="Center"
-                Click="btnSelect3DModel_Click"
+                Click="btnAdd3DModel_Click"
                 Content="添加模型" />
             <Button
                 x:Name="btnClear3DModel"
