@@ -15,7 +15,7 @@ namespace import3D
             InitializeComponent();
             ObjReader myHelixObjReader = new ObjReader();
             //读入模型文件
-            Model3DGroup MyModel = import.Load(@".\model\magnolia.stl");
+            Model3DGroup MyModel = import.Load(@".\3D_Models\magnolia.stl");
             // Display the model
             model.Content = MyModel;
             helixControl.ZoomExtents();
