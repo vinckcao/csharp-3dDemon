@@ -19,7 +19,7 @@ namespace import3D
             InitializeComponent();
             ObjReader myHelixObjReader = new ObjReader();
             //读入模型文件
-            Model3DGroup MyModel = import.Load($@".\{ModelForder}\magnolia.stl");
+            Model3DGroup MyModel = import.Load($@".\{ModelForder}\DinoRider.3ds");
             // Display the model
             model.Content = MyModel;
             helixControl.ZoomExtents();
