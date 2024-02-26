@@ -3,6 +3,8 @@ using HelixToolkit.Wpf;
 using System.IO;
 using System.Windows;
 using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
 
@@ -64,6 +66,18 @@ namespace import3D
                 filesPath.AddRange(dlg.FileNames);
             }
             return filesPath;
+        }
+
+        private void HelixControl_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Point mousePos = e.GetPosition(helixControl);
+            PointHitTestParameters hitParams = new PointHitTestParameters(mousePos);
+            //VisualTreeHelper.HitTest(HelixControl, null, ResultCallback, hitParams);
+
+            MessageBox.Show(mousePos.ToString());
+
+            //MessageBox.Show("Hit 3D!");
+            //new Window1().Show();
         }
     }
 }

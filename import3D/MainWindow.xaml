@@ -17,6 +17,7 @@
 
         <helix:HelixViewport3D
             x:Name="helixControl"
+            MouseDoubleClick="HelixControl_OnMouseDoubleClick"
             RotateAroundMouseDownPoint="True"
             ShowFrameRate="True"
             ZoomAroundMouseDownPoint="True"
