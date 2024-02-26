@@ -22,7 +22,7 @@
             ZoomAroundMouseDownPoint="True"
             ZoomExtentsWhenLoaded="True">
             <!--  相机位置也很重要，位置不对，看到的模型就很奇怪  -->
-            <helix:HelixViewport3D.Camera>
+            <!--<helix:HelixViewport3D.Camera>
                 <PerspectiveCamera
                     FarPlaneDistance="2000"
                     FieldOfView="45"
@@ -30,7 +30,7 @@
                     NearPlaneDistance=".1"
                     Position="9.9475983006414E-14,91.037123633789,414.387754871885"
                     UpDirection="0,1,0" />
-            </helix:HelixViewport3D.Camera>
+            </helix:HelixViewport3D.Camera>-->
             <!--  很重要，没有灯光场景是黑的  -->
             <helix:DefaultLights />
             <ModelVisual3D x:Name="model" />
