@@ -1,4 +1,5 @@
 ﻿using HelixToolkit.Wpf;
+using System.IO;
 using System.Windows;
 using System.Windows.Media.Media3D;
 
@@ -11,12 +12,14 @@ namespace import3D
     {
         private ModelImporter import = new ModelImporter();//导入模型的类对象
 
+        public readonly string myModelPath = "3D_Models";//模型文件夹路径
+
         public MainWindow()
         {
             InitializeComponent();
             ObjReader myHelixObjReader = new ObjReader();
             //读入模型文件
-            Model3DGroup MyModel = import.Load(@".\3D_Models\magnolia.stl");
+            Model3DGroup MyModel = import.Load($@".\{myModelPath}\magnolia.stl");
             // Display the model
             model.Content = MyModel;
             helixControl.ZoomExtents();
@@ -38,7 +41,7 @@ namespace import3D
         {
             string path = string.Empty;
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            dlg.InitialDirectory = System.IO.Directory.GetCurrentDirectory();
+            dlg.InitialDirectory = Path.Combine(System.IO.Directory.GetCurrentDirectory(), myModelPath);
             // Show open file dialog box
             System.Nullable<bool> result = dlg.ShowDialog();
 
