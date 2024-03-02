@@ -105,7 +105,9 @@ namespace import3D
                 RayMeshGeometry3DHitTestResult rayMeshResult = rayResult as RayMeshGeometry3DHitTestResult;
                 if (rayMeshResult != null && modelPaths.ContainsKey(rayMeshResult.ModelHit as GeometryModel3D))
                 {
-                    MessageBox.Show($"模型文件路径：{modelPaths[rayMeshResult.ModelHit as GeometryModel3D]}");
+                    string modelPath = modelPaths[rayMeshResult.ModelHit as GeometryModel3D];
+                    string modelName = System.IO.Path.GetFileName(modelPath);
+                    MessageBox.Show($"模型文件名：{modelName}");
                 }
             }
             return HitTestResultBehavior.Stop;
