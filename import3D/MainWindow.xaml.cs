@@ -108,8 +108,13 @@ namespace import3D
                     GeometryModel3D model = rayMeshResult.ModelHit as GeometryModel3D;
                     if (model != null)
                     {
+                        // 创建一个随机颜色
+                        Random rand = new Random();
+                        Color color = Color.FromRgb((byte)rand.Next(256), (byte)rand.Next(256), (byte)rand.Next(256));
+
                         // 创建一个新的材质
-                        Material material = new DiffuseMaterial(new SolidColorBrush(Colors.Red));
+                        Material material = new DiffuseMaterial(new SolidColorBrush(color));
+
                         // 将模型的材质设置为新的材质
                         model.Material = material;
 
