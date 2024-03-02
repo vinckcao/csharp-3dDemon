@@ -52,15 +52,18 @@ namespace import3D
                     try
                     {
                         var MyModel = import.Load(path);
-                        // 创建一个新的ModelVisual3D对象，并将其Content属性设置为新加载的模型
-                        ModelVisual3D modelVisual3D = new ModelVisual3D();
-                        modelVisual3D.Content = MyModel;
+                        foreach (GeometryModel3D geometryModel in MyModel.Children)
+                        {
+                            // 创建一个新的ModelVisual3D对象，并将其Content属性设置为新加载的模型
+                            ModelVisual3D modelVisual3D = new ModelVisual3D();
+                            modelVisual3D.Content = geometryModel;
 
-                        // 将新的ModelVisual3D对象添加到ModelVisual3D容器中
-                        model.Children.Add(modelVisual3D);
+                            // 将新的ModelVisual3D对象添加到ModelVisual3D容器中
+                            model.Children.Add(modelVisual3D);
 
-                        // 将模型和它的文件路径添加到字典中
-                        modelPaths[MyModel] = path;
+                            // 将模型和它的文件路径添加到字典中
+                            modelPaths[geometryModel] = path;
+                        }
                     }
                     catch (Exception exception)
                     {
@@ -100,9 +103,9 @@ namespace import3D
             if (rayResult != null)
             {
                 RayMeshGeometry3DHitTestResult rayMeshResult = rayResult as RayMeshGeometry3DHitTestResult;
-                if (rayMeshResult != null && modelPaths.ContainsKey(rayMeshResult.ModelHit))
+                if (rayMeshResult != null && modelPaths.ContainsKey(rayMeshResult.ModelHit as GeometryModel3D))
                 {
-                    MessageBox.Show($"模型文件路径：{modelPaths[rayMeshResult.ModelHit]}");
+                    MessageBox.Show($"模型文件路径：{modelPaths[rayMeshResult.ModelHit as GeometryModel3D]}");
                 }
             }
             return HitTestResultBehavior.Stop;
