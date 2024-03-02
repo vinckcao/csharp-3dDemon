@@ -21,6 +21,9 @@ namespace import3D
 
         public readonly string ModelForder = "3D_Models";//模型文件夹
 
+        // 创建一个字典来存储模型和它们的文件路径
+        private Dictionary<Model3D, string> modelPaths = new Dictionary<Model3D, string>();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -55,6 +58,9 @@ namespace import3D
 
                         // 将新的ModelVisual3D对象添加到ModelVisual3D容器中
                         model.Children.Add(modelVisual3D);
+
+                        // 将模型和它的文件路径添加到字典中
+                        modelPaths[MyModel] = path;
                     }
                     catch (Exception exception)
                     {
@@ -85,17 +91,27 @@ namespace import3D
         {
             Point mousePos = e.GetPosition(helixControl);
             PointHitTestParameters hitParams = new PointHitTestParameters(mousePos);
-            //VisualTreeHelper.HitTest(HelixControl, null, ResultCallback, hitParams);
+            VisualTreeHelper.HitTest(helixControl, null, ResultCallback, hitParams);
+        }
 
-            MessageBox.Show(mousePos.ToString());
-
-            //MessageBox.Show("Hit 3D!");
-            //new Window1().Show();
+        private HitTestResultBehavior ResultCallback(HitTestResult result)
+        {
+            RayHitTestResult rayResult = result as RayHitTestResult;
+            if (rayResult != null)
+            {
+                RayMeshGeometry3DHitTestResult rayMeshResult = rayResult as RayMeshGeometry3DHitTestResult;
+                if (rayMeshResult != null && modelPaths.ContainsKey(rayMeshResult.ModelHit))
+                {
+                    MessageBox.Show($"模型文件路径：{modelPaths[rayMeshResult.ModelHit]}");
+                }
+            }
+            return HitTestResultBehavior.Stop;
         }
 
         private void btnClear3DModel_Click(object sender, RoutedEventArgs e)
         {
             model.Children.Clear();
+            modelPaths.Clear();
         }
     }
 }
