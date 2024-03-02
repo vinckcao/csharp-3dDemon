@@ -103,11 +103,20 @@ namespace import3D
             if (rayResult != null)
             {
                 RayMeshGeometry3DHitTestResult rayMeshResult = rayResult as RayMeshGeometry3DHitTestResult;
-                if (rayMeshResult != null && modelPaths.ContainsKey(rayMeshResult.ModelHit as GeometryModel3D))
+                if (rayMeshResult != null)
                 {
-                    string modelPath = modelPaths[rayMeshResult.ModelHit as GeometryModel3D];
-                    string modelName = System.IO.Path.GetFileName(modelPath);
-                    MessageBox.Show($"模型文件名：{modelName}");
+                    GeometryModel3D model = rayMeshResult.ModelHit as GeometryModel3D;
+                    if (model != null)
+                    {
+                        // 创建一个新的材质
+                        Material material = new DiffuseMaterial(new SolidColorBrush(Colors.Red));
+                        // 将模型的材质设置为新的材质
+                        model.Material = material;
+
+                        string modelPath = modelPaths[model];
+                        string modelName = System.IO.Path.GetFileName(modelPath);
+                        MessageBox.Show($"模型文件名：{modelName}");
+                    }
                 }
             }
             return HitTestResultBehavior.Stop;
