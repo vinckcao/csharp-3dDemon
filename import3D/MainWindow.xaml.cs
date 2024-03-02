@@ -97,6 +97,20 @@ namespace import3D
             VisualTreeHelper.HitTest(helixControl, null, ResultCallback, hitParams);
         }
 
+        private List<Color> usedColors = new List<Color>();
+
+        private Color GetUniqueRandomColor()
+        {
+            Random rand = new Random();
+            Color color;
+            do
+            {
+                color = Color.FromRgb((byte)rand.Next(256), (byte)rand.Next(256), (byte)rand.Next(256));
+            } while (usedColors.Contains(color));
+            usedColors.Add(color);
+            return color;
+        }
+
         private HitTestResultBehavior ResultCallback(HitTestResult result)
         {
             RayHitTestResult rayResult = result as RayHitTestResult;
@@ -108,9 +122,8 @@ namespace import3D
                     GeometryModel3D model = rayMeshResult.ModelHit as GeometryModel3D;
                     if (model != null)
                     {
-                        // 创建一个随机颜色
-                        Random rand = new Random();
-                        Color color = Color.FromRgb((byte)rand.Next(256), (byte)rand.Next(256), (byte)rand.Next(256));
+                        // 获取一个唯一的随机颜色
+                        Color color = GetUniqueRandomColor();
 
                         // 创建一个新的材质
                         Material material = new DiffuseMaterial(new SolidColorBrush(color));
