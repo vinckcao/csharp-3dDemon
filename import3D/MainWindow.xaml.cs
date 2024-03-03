@@ -40,6 +40,24 @@ namespace import3D
             //// Display the model
             //model.Content = MyModel;
             //helixControl.ZoomExtents();
+
+            // 创建一个新的CameraController对象，并设置其属性
+            //var cameraController = new CameraController
+            //{
+            //    RotateGesture = new MouseGesture(MouseAction.RightClick),
+            //    PanGesture = new MouseGesture(MouseAction.MiddleClick),
+            //    ZoomGesture = new MouseGesture(MouseAction.WheelClick)
+            //};
+
+            //// 将新的CameraController对象赋值给HelixViewport3D的CameraController属性
+            //helixControl.CameraController = cameraController;
+
+            // 修改默认的视图控制
+            helixControl.CameraRotationMode = CameraRotationMode.Trackball;
+            helixControl.CameraMode = CameraMode.Inspect;
+
+            // 修改相机的上方向
+            helixControl.Camera.UpDirection = new Vector3D(0, 0, 1);
         }
 
         private void btnAdd3DModel_Click(object sender, RoutedEventArgs e)
