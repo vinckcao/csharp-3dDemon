@@ -8,6 +8,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Media3D;
 using System.Windows.Navigation;
+using import3D.Extensions;
 
 namespace import3D
 {
@@ -85,7 +86,7 @@ namespace import3D
                     }
                     catch (Exception exception)
                     {
-                        MessageBox.Show($"报错模型文件路径：{path},报错信息：{exception.Message}");
+                        HcGrowlExtensions.Warning($"报错模型文件路径：{path},报错信息：{exception.Message}");
                     }
                 }
                 helixControl.ZoomExtents();
@@ -151,7 +152,7 @@ namespace import3D
 
                         string modelPath = modelPaths[model];
                         string modelName = System.IO.Path.GetFileName(modelPath);
-                        MessageBox.Show($"模型文件名：{modelName}");
+                        HcGrowlExtensions.Info($"模型文件名：{modelName}");
                     }
                 }
             }
