@@ -44,11 +44,19 @@
                 <ColumnDefinition />
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
+            <CheckBox
+                x:Name="chkAutoGenerateColor"
+                Grid.Column="1"
+                Margin="10,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Content="自动渲染随机颜色" />
             <Button
                 x:Name="btnAdd3DModel"
-                Grid.Column="1"
+                Grid.Column="2"
                 Width="75"
                 Margin="10,0"
                 HorizontalAlignment="Center"
@@ -58,7 +66,7 @@
                 Content="添加模型" />
             <Button
                 x:Name="btnClear3DModel"
-                Grid.Column="2"
+                Grid.Column="3"
                 Width="75"
                 Margin="10,0"
                 HorizontalAlignment="Center"

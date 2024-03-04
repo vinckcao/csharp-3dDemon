@@ -5,6 +5,7 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWPF>true</UseWPF>
     <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+    <ApplicationIcon>Images\Logo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <None Update="3D_Models\Astronaut.3ds">
@@ -86,6 +87,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\Logo.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HandyControl" Version="3.5.0" />

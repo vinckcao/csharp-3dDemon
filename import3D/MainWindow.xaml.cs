@@ -75,19 +75,19 @@ namespace import3D
                         {
                             // 创建一个新的ModelVisual3D对象，并将其Content属性设置为新加载的模型
                             ModelVisual3D modelVisual3D = new ModelVisual3D();
-
-                            // 获取一个唯一的随机颜色
-                            Color color = GetUniqueRandomColor();
-                            // 创建一个新的材质
-                            Material material = new DiffuseMaterial(new SolidColorBrush(color));
-                            // 将模型的材质设置为新的材质
-                            geometryModel.Material = material;
-
+                            if (chkAutoGenerateColor.IsChecked == true)
+                            {
+                                // 获取一个唯一的随机颜色
+                                Color color = GetUniqueRandomColor();
+                                // 创建一个新的材质
+                                Material material = new DiffuseMaterial(new SolidColorBrush(color));
+                                // 将模型的材质设置为新的材质
+                                geometryModel.Material = material;
+                            }
                             modelVisual3D.Content = geometryModel;
 
                             // 将新的ModelVisual3D对象添加到ModelVisual3D容器中
                             model.Children.Add(modelVisual3D);
-
                             // 将模型和它的文件路径添加到字典中
                             modelPaths[geometryModel] = path;
                         }
